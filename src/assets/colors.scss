@@ -1,0 +1,40 @@
+$color-brand-one: rgb(255, 255, 255);
+$color-brand-two: rgb(37, 37, 37);
+$color-brand-three: rgb(25, 25, 25);
+$gradient-brand-one: linear-gradient(340deg, rgb(20, 20, 20) 50%, rgb(37, 37, 37) 100%);
+
+:root {
+
+  --color-brand-one: #{$color-brand-one};
+  --color-brand-two: #{$color-brand-two};
+  --color-brand-three: #{$color-brand-three};
+
+  --gradient-brand-one: #{$gradient-brand-one};
+
+}
+
+.bg-color-brand-one {
+  background-color: var(--color-brand-one);
+}
+.bg-color-brand-two {
+  background-color: var(--color-brand-two);
+}
+.bg-color-brand-three {
+  background-color: var(--color-brand-three);
+}
+
+.bg-gradient-brand-one {
+  background: var(--gradient-brand-one);
+}
+
+.color-brand-one{
+  color: var(--color-brand-one);
+}
+
+.color-brand-two{
+  color: var(--color-brand-two);
+}
+
+.bg-color-brand-three{
+  color: var(--color-brand-three);
+}
