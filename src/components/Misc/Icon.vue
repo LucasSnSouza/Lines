@@ -40,7 +40,7 @@ export default {
 	},
 	methods: {
 		async getIcon() {
-			return await import(`@/assets/svg/${this.icon}.svg`)
+			return await import(`/svg/${this.icon}.svg`)
 		}
 	}
 }
