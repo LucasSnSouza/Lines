@@ -1,0 +1,70 @@
+$scale-sm: 4px;
+$scale-md: 8px;
+$scale-lg: 14px;
+$scale-xlg: 16px;
+
+$font-xsm: 10pt;
+$font-sm: 12pt;
+$font-md: 14pt;
+$font-lg: 16pt;
+$font-xlg: 20pt;
+
+.p-sm{
+    padding: $scale-sm;
+}
+
+.p-md{
+    padding: $scale-md;
+}
+
+.p-lg{
+    padding: $scale-lg;
+}
+
+.rounded-sm{
+    border-radius: $scale-sm;
+}
+
+.rounded-md{
+    border-radius: $scale-md;
+}
+
+.rounded-lg{
+    border-radius: $scale-lg;
+}
+
+.gap-sm{
+    gap: $scale-sm;
+}
+
+.gap-md{
+    gap: $scale-md;
+}
+
+.gap-lg{
+    gap: $scale-lg;
+}
+
+.font-xsm{
+    font-size: $font-xsm;
+}
+
+.font-sm{
+    font-size: $font-sm;
+}
+
+.font-md{
+    font-size: $font-md;
+}
+
+.font-lg{
+    font-size: $font-lg;
+}
+
+.font-xlg{
+    font-size: $font-xlg;
+}
+
+.shadow-sm{
+    box-shadow: $scale-sm $scale-sm $scale-md rgba(0, 0, 0, 0.1);
+}
