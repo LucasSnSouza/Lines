@@ -16,7 +16,7 @@
 export default {
     data() {
         return {
-            module: null,
+            module: `/svg/${this.icon}.svg`
         }
     },
     props:{
@@ -33,15 +33,7 @@ export default {
             default: () => [16, 16]
         }
     },
-    created() {
-		this.getIcon().then(({ default: icon }) => {
-			this.module = icon
-		})
-	},
 	methods: {
-		async getIcon() {
-			return await import(`/svg/${this.icon}.svg`)
-		}
 	}
 }
 
