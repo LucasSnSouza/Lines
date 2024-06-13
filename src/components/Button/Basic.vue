@@ -33,6 +33,12 @@ export default{
     &.one{
         background: var(--color-brand-two);
     }
+
+    &.two{
+        background: none;
+        border: 2px solid var(--color-brand-two);
+    }
+
 }
 
 </style>
