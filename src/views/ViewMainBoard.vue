@@ -2,12 +2,24 @@
 
     <div class="main-board-wrapper h-full p-lg bg-gradient-brand-one">
         <div class="main-board-title">
-          <h1 class="color-brand-one font-xlg" v-if="user_name">Oi {{ user_name }}</h1>
-          <h1 class="color-brand-one font-lg" v-else>Olá Configure seu perfil</h1>
-          <p class="color-brand-one font-sm">Não existem avisos no momento</p> 
+          <h1 class="color-brand-one font-lg" v-if="user_name">Oi {{ user_name }}</h1>
+          <ButtonBasic
+            v-else
+            type="one"
+            class="w-full p-lg rounded-lg shadow-sm"
+          >
+            <p class="color-brand-one text-start font-sm">Precisamos de algumas configurações</p>
+          </ButtonBasic>
+          <p
+            v-if="user_name" 
+            class="color-brand-one font-xsm"
+          >
+            Não existem avisos no momento
+          </p> 
         </div>
         <div class="main-board-adventures-action">
           <ButtonBasic
+            v-if="isExistStorage('Adventures')"
             type="one"
             class="w-full p-lg rounded-lg shadow-sm"
           >
@@ -15,70 +27,102 @@
             <p class="color-brand-one text-start font-xsm">Ultimo acontecimento da aventura</p>
             <p class="color-brand-one text-start font-xsm">Continuar</p>
           </ButtonBasic>
+          <ButtonBasic
+            v-else
+            type="two"
+            class="w-full p-lg rounded-lg shadow-sm"
+          >
+            <p class="color-brand-one text-start font-sm">Você ainda não possui uma aventura</p>
+          </ButtonBasic>
         </div>
         <div>
-          <h1 class="color-brand-one font-lg">Adicionais</h1>
+          <h1 class="color-brand-one font-md">Recursos</h1>
+          <p 
+            class="color-brand-one font-xsm"
+          >
+            Nenhuma historia pode ser criada sem recursos para serem usados
+          </p> 
         </div>
         <div class="main-board-manager-actions gap-md">
 
           <ButtonBasic
             type="one"
-            class="w-full p-lg rounded-lg"
+            class="w-full p-lg rounded-lg flex flex-column gap-md"
           >
             <MiscIcon
               icon="sword-icon"
-              :size="[24, 24]"
+              :size="[22, 22]"
             />
-            <h1 class="color-brand-one text-start font-md">Ferramentas</h1>
-            <p class="color-brand-one text-start font-sm">15 Registrados</p>
+            <div>
+              <h1 class="color-brand-one text-start font-sm">Ferramentas</h1>
+              <p class="color-brand-one text-start font-xsm">
+                {{ isExistStorage('Tools') ? `5 Registrados` : "A categoria está vazia" }} 
+              </p>
+            </div>
           </ButtonBasic>
 
           <ButtonBasic
             type="one"
-            class="w-full p-lg rounded-lg"
+            class="w-full p-lg rounded-lg flex flex-column gap-md"
           >
             <MiscIcon
               icon="item-icon"
               :size="[24, 24]"
             />
-            <h1 class="color-brand-one text-start font-md">Materiais</h1>
-            <p class="color-brand-one text-start font-sm">30 Registrados</p>
+            <div>
+              <h1 class="color-brand-one text-start font-sm">Materiais</h1>
+              <p class="color-brand-one text-start font-xsm">
+                {{ isExistStorage('Materials') ? `5 Registrados` : "A categoria está vazia" }}
+              </p>
+            </div>
           </ButtonBasic>
 
           <ButtonBasic
             type="one"
-            class="w-full p-lg rounded-lg "
+            class="w-full p-lg rounded-lg flex flex-column gap-md"
           >
             <MiscIcon
               icon="clouth-icon"
-              :size="[24, 24]"
+              :size="[22, 22]"
             />
-            <h1 class="color-brand-one text-start font-md">Vestimentas</h1>
-            <p class="color-brand-one text-start font-sm">4 Registrados</p>
+            <div>
+              <h1 class="color-brand-one text-start font-sm">Vestimentas</h1>
+              <p class="color-brand-one text-start font-xsm">
+                {{ isExistStorage('Clouths') ? `5 Registrados` : "A categoria está vazia" }}
+              </p>
+            </div>
           </ButtonBasic>
 
           <ButtonBasic
             type="one"
-            class="w-full p-lg rounded-lg "
+            class="w-full p-lg rounded-lg flex flex-column gap-md"
           >
             <MiscIcon
               icon="particle-icon"
-              :size="[24, 24]"
+              :size="[22, 22]"
             />
-            <h1 class="color-brand-one text-start font-md">Efeitos</h1>
-            <p class="color-brand-one text-start font-sm">6 Registrados</p>
+            <div>
+              <h1 class="color-brand-one text-start font-sm">Efeitos</h1>
+              <p class="color-brand-one text-start font-xsm">
+                {{ isExistStorage('Effects') ? `5 Registrados` : "A categoria está vazia" }}
+              </p>
+            </div>
           </ButtonBasic>
 
           <ButtonBasic
             type="one"
-            class="w-full p-lg rounded-lg "
+            class="w-full p-lg rounded-lg flex flex-column gap-md"
           >
             <MiscIcon
               icon="hand-icon"
-              :size="[24, 24]"
+              :size="[22, 22]"
             />
-            <h1 class="color-brand-one text-start font-md">Magias</h1>
-            <p class="color-brand-one text-start font-sm">12 Registrados</p>
+            <div>
+              <h1 class="color-brand-one text-start font-sm">Magias</h1>
+              <p class="color-brand-one text-start font-xsm">
+                {{ isExistStorage('Spells') ? `5 Registrados` : "A categoria está vazia" }}
+              </p>
+            </div>
           </ButtonBasic>
 
         </div>
@@ -104,6 +148,11 @@ export default{
       ...Misc
     },
     created(){
+    },
+    methods: {
+      isExistStorage(storage){
+        return StorageGet(storage);
+      }
     }
 }
 
@@ -112,7 +161,7 @@ export default{
 <style lang="scss" scoped>
 
 .main-board-title{
-  padding-top: 80px;
+  padding-top: 70px;
   padding-bottom: 20px;
 }
 
@@ -124,6 +173,10 @@ export default{
   padding-top: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  &.main-board-manager-actions button:last-child{
+    grid-column: span 2;
+  }
 }
 
 </style>
