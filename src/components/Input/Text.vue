@@ -6,7 +6,8 @@
         <p v-if="title">{{ title }}</p>
         <input 
             class="w-full h-full font-sm"
-            :value="value" 
+            :value="value"
+            v-uppercase
             :placeholder="placeholder"
             @input="$emit('update:modelValue', $event.target.value)"
         />
