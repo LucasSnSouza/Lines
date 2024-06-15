@@ -32,6 +32,11 @@ export default{
 
     &.one{
         background: var(--color-brand-two);
+
+        &.ghost{
+            background: none;
+            border: 1px solid var(--color-brand-two);
+        }
     }
 
     &.two{
