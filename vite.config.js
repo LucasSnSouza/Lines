@@ -14,7 +14,7 @@ export default defineConfig({
     }
   },
   pwa: {
-    name: 'My App',
+    name: 'Lines',
     themeColor: '#4DBA87',
     msTileColor: '#000000',
     appleMobileWebAppCapable: 'yes',
