@@ -11,7 +11,9 @@
             <InputText
                 class="w-full"
                 placeholder="Informe seu nome completo"
-                title="Qual seu nome?"
+                title="Qual seu nome"
+                :value="form_data['name']"
+                v-model="form_data['name']"
             />
         </div>
 
@@ -19,8 +21,39 @@
             <InputText
                 class="w-full"
                 placeholder="Nome usado para exibição"
-                title="Qual seu apelido"
+                title="Como quer ser chamado"
+                :value="form_data['nick']"
+                v-model="form_data['nick']"
             />
+        </div>
+
+        <div class="w-full flex gap-md">
+            <InputText
+                class="w-full"
+                placeholder="Somente nome"
+                title="Em que cidade mora"
+                :value="form_data['city']"
+                v-model="form_data['city']"
+            />
+            <InputText
+                class="w-full"
+                placeholder="Sigla UF"
+                title="A que estado pertence"
+                :value="form_data['state']"
+                v-model="form_data['state']"
+            />
+        </div>
+
+        <div class="w-full flex gap-md">
+
+            <ButtonBasic
+                type="one"
+                class="w-full p-lg rounded-lg flex flex-column gap-md"
+                @click="setAccount()"
+            >
+                <p class="color-brand-one text-start font-sm">Finalizar formulario</p>
+            </ButtonBasic>
+            
         </div>
 
     </div>
@@ -29,16 +62,35 @@
 
 <script>
 
+import { StorageSet, StorageGet, StorageFind } from '@/utils/Storage.js';
+
 import * as Input from "@/components/Input"
+import * as Button from '@/components/Button';
 
 import { useNavigationStore } from '@/stores/navigation.js'
 
 export default{
+    data() {
+        return {
+            form_data: {}
+        }
+    },
     components: {
-        ...Input
+        ...Input,
+        ...Button
     },
     created(){
         useNavigationStore().setTitle('Configurações');
+    },
+    methods: {
+        setRoute(route){
+            this.$router.push( { name: route } )
+        },
+        setAccount(){
+            StorageSet("Administration", "ProfileDefault",this.form_data);
+            useNavigationStore().setTitle(null);
+            this.setRoute('main-board');
+        }
     }
 }
 

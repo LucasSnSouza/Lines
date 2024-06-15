@@ -4,7 +4,12 @@
         :class="this.class, type"
     >
         <p v-if="title">{{ title }}</p>
-        <input :value="value" :placeholder="placeholder" class="w-full h-full font-sm"/>
+        <input 
+            class="w-full h-full font-sm"
+            :value="value" 
+            :placeholder="placeholder"
+            @input="$emit('update:modelValue', $event.target.value)"
+        />
     </div>
 </template>
 
