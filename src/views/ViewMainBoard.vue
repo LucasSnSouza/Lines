@@ -7,6 +7,7 @@
             v-else
             type="one"
             class="w-full p-lg rounded-lg shadow-sm"
+            @click="$router.push( { name: 'configuration' } )"
           >
             <p class="color-brand-one text-start font-sm">Precisamos de algumas configurações</p>
           </ButtonBasic>
@@ -48,6 +49,7 @@
           <ButtonBasic
             type="one"
             class="w-full p-lg rounded-lg flex flex-column gap-md"
+            @click="$router.push( { name: 'catalog', query: { title: 'Ferramentas' } } )"
           >
             <MiscIcon
               icon="sword-icon"
@@ -64,6 +66,7 @@
           <ButtonBasic
             type="one"
             class="w-full p-lg rounded-lg flex flex-column gap-md"
+            @click="$router.push( { name: 'catalog', query: { title: 'Materiais' } } )"
           >
             <MiscIcon
               icon="item-icon"
@@ -80,6 +83,7 @@
           <ButtonBasic
             type="one"
             class="w-full p-lg rounded-lg flex flex-column gap-md"
+            @click="$router.push( { name: 'catalog', query: { title: 'Vestimentas' } } )"
           >
             <MiscIcon
               icon="clouth-icon"
@@ -96,6 +100,7 @@
           <ButtonBasic
             type="one"
             class="w-full p-lg rounded-lg flex flex-column gap-md"
+            @click="$router.push( { name: 'catalog', query: { title: 'Efeitos' } } )"
           >
             <MiscIcon
               icon="particle-icon"
@@ -112,6 +117,7 @@
           <ButtonBasic
             type="one"
             class="w-full p-lg rounded-lg flex flex-column gap-md"
+            @click="$router.push( { name: 'catalog', query: { title: 'Magias' } } )"
           >
             <MiscIcon
               icon="hand-icon"
