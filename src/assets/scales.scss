@@ -9,6 +9,12 @@ $font-md: 14pt;
 $font-lg: 16pt;
 $font-xlg: 20pt;
 
+:root{
+    --scale-brand-sm: #{$scale-sm};
+    --scale-brand-md: #{$scale-md};
+    --scale-brand-lg: #{$scale-lg};
+}
+
 .p-sm{
     padding: $scale-sm;
 }

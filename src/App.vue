@@ -22,7 +22,7 @@
           />
         </ButtonBasic>
         <p 
-          class="color-brand-two text-start font-md p-md"
+          class="color-brand-two text-start font-sm p-md"
           style="border-right: 2px solid var(--color-brand-two);"
         >
           {{ navigationStore.getTitle }}
