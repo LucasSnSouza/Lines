@@ -11,9 +11,5 @@ export const useNavigationStore = defineStore('navigation', {
         setTitle(title) {
             this.title = title;
         },
-        goback(){
-            this.setTitle(null);
-            this.$router.push( { name: "main-board"} );
-        }
     }
 })

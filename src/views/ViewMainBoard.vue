@@ -37,99 +37,114 @@
           </ButtonBasic>
         </div>
         <div>
-          <h1 class="color-brand-one font-md">Recursos</h1>
-          <p 
-            class="color-brand-one font-xsm"
-          >
-            Nenhuma historia pode ser criada sem recursos para serem usados
-          </p> 
+          <div v-if="user_name">
+            <h1 class="color-brand-one font-md">Recursos</h1>
+            <p 
+              class="color-brand-one font-xsm"
+            >
+              Nenhuma historia pode ser criada sem recursos para serem usados
+            </p>
+          </div>
+          <div v-else>
+            <h1 class="color-brand-one font-md">Aviso importante</h1>
+            <p 
+              class="color-brand-one font-xsm"
+            >
+              Infelizmente ainda não foi encontrado um registro, precisamos da configuração inicial para que você tenha a melhor experiencia possivel.
+            </p>
+          </div>
         </div>
-        <div class="main-board-manager-actions gap-md">
+        <div class="main-board-manager-actions">
 
-          <ButtonBasic
-            type="one"
-            class="w-full p-lg rounded-lg flex flex-column gap-md"
-            @click="$router.push( { name: 'catalog', query: { title: 'Ferramentas' } } )"
+          <div 
+            v-if="user_name"
+            class="gap-md"
           >
-            <MiscIcon
-              icon="sword-icon"
-              :size="[22, 22]"
-            />
-            <div>
-              <h1 class="color-brand-one text-start font-sm">Ferramentas</h1>
-              <p class="color-brand-one text-start font-xsm">
-                {{ isExistStorage('Tools') ? `5 Registrados` : "A categoria está vazia" }} 
-              </p>
-            </div>
-          </ButtonBasic>
-
-          <ButtonBasic
-            type="one"
-            class="w-full p-lg rounded-lg flex flex-column gap-md"
-            @click="$router.push( { name: 'catalog', query: { title: 'Materiais' } } )"
-          >
-            <MiscIcon
-              icon="item-icon"
-              :size="[24, 24]"
-            />
-            <div>
-              <h1 class="color-brand-one text-start font-sm">Materiais</h1>
-              <p class="color-brand-one text-start font-xsm">
-                {{ isExistStorage('Materials') ? `5 Registrados` : "A categoria está vazia" }}
-              </p>
-            </div>
-          </ButtonBasic>
-
-          <ButtonBasic
-            type="one"
-            class="w-full p-lg rounded-lg flex flex-column gap-md"
-            @click="$router.push( { name: 'catalog', query: { title: 'Vestimentas' } } )"
-          >
-            <MiscIcon
-              icon="clouth-icon"
-              :size="[22, 22]"
-            />
-            <div>
-              <h1 class="color-brand-one text-start font-sm">Vestimentas</h1>
-              <p class="color-brand-one text-start font-xsm">
-                {{ isExistStorage('Clouths') ? `5 Registrados` : "A categoria está vazia" }}
-              </p>
-            </div>
-          </ButtonBasic>
-
-          <ButtonBasic
-            type="one"
-            class="w-full p-lg rounded-lg flex flex-column gap-md"
-            @click="$router.push( { name: 'catalog', query: { title: 'Efeitos' } } )"
-          >
-            <MiscIcon
-              icon="particle-icon"
-              :size="[22, 22]"
-            />
-            <div>
-              <h1 class="color-brand-one text-start font-sm">Efeitos</h1>
-              <p class="color-brand-one text-start font-xsm">
-                {{ isExistStorage('Effects') ? `5 Registrados` : "A categoria está vazia" }}
-              </p>
-            </div>
-          </ButtonBasic>
-
-          <ButtonBasic
-            type="one"
-            class="w-full p-lg rounded-lg flex flex-column gap-md"
-            @click="$router.push( { name: 'catalog', query: { title: 'Magias' } } )"
-          >
-            <MiscIcon
-              icon="hand-icon"
-              :size="[22, 22]"
-            />
-            <div>
-              <h1 class="color-brand-one text-start font-sm">Magias</h1>
-              <p class="color-brand-one text-start font-xsm">
-                {{ isExistStorage('Spells') ? `5 Registrados` : "A categoria está vazia" }}
-              </p>
-            </div>
-          </ButtonBasic>
+            <ButtonBasic
+              type="one"
+              class="w-full p-lg rounded-lg flex flex-column gap-md"
+              @click="$router.push( { name: 'catalog', query: { title: 'Ferramentas' } } )"
+            >
+              <MiscIcon
+                icon="sword-icon"
+                :size="[22, 22]"
+              />
+              <div>
+                <h1 class="color-brand-one text-start font-sm">Ferramentas</h1>
+                <p class="color-brand-one text-start font-xsm">
+                  {{ isExistStorage('Tools') ? `5 Registrados` : "A categoria está vazia" }} 
+                </p>
+              </div>
+            </ButtonBasic>
+  
+            <ButtonBasic
+              type="one"
+              class="w-full p-lg rounded-lg flex flex-column gap-md"
+              @click="$router.push( { name: 'catalog', query: { title: 'Materiais' } } )"
+            >
+              <MiscIcon
+                icon="item-icon"
+                :size="[24, 24]"
+              />
+              <div>
+                <h1 class="color-brand-one text-start font-sm">Materiais</h1>
+                <p class="color-brand-one text-start font-xsm">
+                  {{ isExistStorage('Materials') ? `5 Registrados` : "A categoria está vazia" }}
+                </p>
+              </div>
+            </ButtonBasic>
+  
+            <ButtonBasic
+              type="one"
+              class="w-full p-lg rounded-lg flex flex-column gap-md"
+              @click="$router.push( { name: 'catalog', query: { title: 'Vestimentas' } } )"
+            >
+              <MiscIcon
+                icon="clouth-icon"
+                :size="[22, 22]"
+              />
+              <div>
+                <h1 class="color-brand-one text-start font-sm">Vestimentas</h1>
+                <p class="color-brand-one text-start font-xsm">
+                  {{ isExistStorage('Clouths') ? `5 Registrados` : "A categoria está vazia" }}
+                </p>
+              </div>
+            </ButtonBasic>
+  
+            <ButtonBasic
+              type="one"
+              class="w-full p-lg rounded-lg flex flex-column gap-md"
+              @click="$router.push( { name: 'catalog', query: { title: 'Efeitos' } } )"
+            >
+              <MiscIcon
+                icon="particle-icon"
+                :size="[22, 22]"
+              />
+              <div>
+                <h1 class="color-brand-one text-start font-sm">Efeitos</h1>
+                <p class="color-brand-one text-start font-xsm">
+                  {{ isExistStorage('Effects') ? `5 Registrados` : "A categoria está vazia" }}
+                </p>
+              </div>
+            </ButtonBasic>
+  
+            <ButtonBasic
+              type="one"
+              class="w-full p-lg rounded-lg flex flex-column gap-md"
+              @click="$router.push( { name: 'catalog', query: { title: 'Magias' } } )"
+            >
+              <MiscIcon
+                icon="hand-icon"
+                :size="[22, 22]"
+              />
+              <div>
+                <h1 class="color-brand-one text-start font-sm">Magias</h1>
+                <p class="color-brand-one text-start font-xsm">
+                  {{ isExistStorage('Spells') ? `5 Registrados` : "A categoria está vazia" }}
+                </p>
+              </div>
+            </ButtonBasic>
+          </div>
 
         </div>
     </div>
@@ -177,12 +192,12 @@ export default{
 
 .main-board-manager-actions{
   padding-top: 15px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  &.main-board-manager-actions button:last-child{
-    grid-column: span 2;
+  
+  div:first-child{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
+
 }
 
 </style>

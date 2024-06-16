@@ -7,7 +7,6 @@
         <input 
             class="w-full h-full font-sm"
             :value="value"
-            v-uppercase
             :placeholder="placeholder"
             @input="$emit('update:modelValue', $event.target.value)"
         />

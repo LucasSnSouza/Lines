@@ -76,7 +76,7 @@ export default{
 
 .header-main-page{
   height: 80px;
-  position: absolute;
+  position: fixed;
 }
 
 .container-main-page{

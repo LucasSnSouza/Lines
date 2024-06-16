@@ -12,8 +12,8 @@
                 class="w-full"
                 placeholder="Informe seu nome completo"
                 title="Qual seu nome"
-                :value="form_data['name']"
-                v-model="form_data['name']"
+                :value="form_data['fullname']"
+                v-model="form_data['fullname']"
             />
         </div>
 
@@ -22,8 +22,8 @@
                 class="w-full"
                 placeholder="Nome usado para exibição"
                 title="Como quer ser chamado"
-                :value="form_data['nick']"
-                v-model="form_data['nick']"
+                :value="form_data['name']"
+                v-model="form_data['name']"
             />
         </div>
 
@@ -41,6 +41,21 @@
                 title="A que estado pertence"
                 :value="form_data['state']"
                 v-model="form_data['state']"
+            />
+        </div>
+
+        <div class="w-full flex gap-md">
+            <InputText
+                class="w-full"
+                placeholder="Email para validações e notificações"
+                title="Informe um email para contato"
+                :value="form_data['email']"
+                v-model="form_data['email']"
+            />
+        </div>
+
+        <div class="w-full flex gap-md">
+            <InputPicture
             />
         </div>
 
