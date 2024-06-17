@@ -13,6 +13,10 @@ $font-xlg: 20pt;
     --scale-brand-sm: #{$scale-sm};
     --scale-brand-md: #{$scale-md};
     --scale-brand-lg: #{$scale-lg};
+
+    --text-brand-sm: #{$font-sm};
+    --text-brand-md: #{$font-md};
+    --text-brand-lg: #{$font-lg};
 }
 
 .p-sm{

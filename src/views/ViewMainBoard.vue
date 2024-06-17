@@ -37,10 +37,10 @@
           </ButtonBasic>
         </div>
         <div>
-          <div v-if="user_name">
-            <h1 class="color-brand-one font-md">Recursos</h1>
+          <div v-if="user_name" class="color-brand-one">
+            <h1 class="font-md">Recursos</h1>
             <p 
-              class="color-brand-one font-xsm"
+              class="font-xsm"
             >
               Nenhuma historia pode ser criada sem recursos para serem usados
             </p>
@@ -54,7 +54,7 @@
             </p>
           </div>
         </div>
-        <div class="main-board-manager-actions">
+        <div class="main-board-manager-actions color-brand-one">
 
           <div 
             v-if="user_name"
@@ -62,7 +62,7 @@
           >
             <ButtonBasic
               type="one"
-              class="w-full p-lg rounded-lg flex flex-column gap-md"
+              class="w-full p-lg rounded-lg flex flex-column gap-md color-brand-one"
               @click="$router.push( { name: 'catalog', query: { title: 'Ferramentas' } } )"
             >
               <MiscIcon
@@ -70,8 +70,8 @@
                 :size="[22, 22]"
               />
               <div>
-                <h1 class="color-brand-one text-start font-sm">Ferramentas</h1>
-                <p class="color-brand-one text-start font-xsm">
+                <h1 class="text-start font-sm">Ferramentas</h1>
+                <p class="text-start font-xsm">
                   {{ isExistStorage('Tools') ? `5 Registrados` : "A categoria está vazia" }} 
                 </p>
               </div>
@@ -79,7 +79,7 @@
   
             <ButtonBasic
               type="one"
-              class="w-full p-lg rounded-lg flex flex-column gap-md"
+              class="w-full p-lg rounded-lg flex flex-column gap-md color-brand-one"
               @click="$router.push( { name: 'catalog', query: { title: 'Materiais' } } )"
             >
               <MiscIcon
@@ -87,8 +87,8 @@
                 :size="[24, 24]"
               />
               <div>
-                <h1 class="color-brand-one text-start font-sm">Materiais</h1>
-                <p class="color-brand-one text-start font-xsm">
+                <h1 class="text-start font-sm">Materiais</h1>
+                <p class="text-start font-xsm">
                   {{ isExistStorage('Materials') ? `5 Registrados` : "A categoria está vazia" }}
                 </p>
               </div>
@@ -96,7 +96,7 @@
   
             <ButtonBasic
               type="one"
-              class="w-full p-lg rounded-lg flex flex-column gap-md"
+              class="w-full p-lg rounded-lg flex flex-column gap-md color-brand-one"
               @click="$router.push( { name: 'catalog', query: { title: 'Vestimentas' } } )"
             >
               <MiscIcon
@@ -104,8 +104,8 @@
                 :size="[22, 22]"
               />
               <div>
-                <h1 class="color-brand-one text-start font-sm">Vestimentas</h1>
-                <p class="color-brand-one text-start font-xsm">
+                <h1 class="text-start font-sm">Vestimentas</h1>
+                <p class="text-start font-xsm">
                   {{ isExistStorage('Clouths') ? `5 Registrados` : "A categoria está vazia" }}
                 </p>
               </div>
@@ -113,7 +113,7 @@
   
             <ButtonBasic
               type="one"
-              class="w-full p-lg rounded-lg flex flex-column gap-md"
+              class="w-full p-lg rounded-lg flex flex-column gap-md color-brand-one"
               @click="$router.push( { name: 'catalog', query: { title: 'Efeitos' } } )"
             >
               <MiscIcon
@@ -121,8 +121,8 @@
                 :size="[22, 22]"
               />
               <div>
-                <h1 class="color-brand-one text-start font-sm">Efeitos</h1>
-                <p class="color-brand-one text-start font-xsm">
+                <h1 class="text-start font-sm">Efeitos</h1>
+                <p class="text-start font-xsm">
                   {{ isExistStorage('Effects') ? `5 Registrados` : "A categoria está vazia" }}
                 </p>
               </div>
@@ -130,7 +130,7 @@
   
             <ButtonBasic
               type="one"
-              class="w-full p-lg rounded-lg flex flex-column gap-md"
+              class="w-full p-lg rounded-lg flex flex-column gap-md color-brand-one"
               @click="$router.push( { name: 'catalog', query: { title: 'Magias' } } )"
             >
               <MiscIcon
@@ -138,8 +138,8 @@
                 :size="[22, 22]"
               />
               <div>
-                <h1 class="color-brand-one text-start font-sm">Magias</h1>
-                <p class="color-brand-one text-start font-xsm">
+                <h1 class="text-start font-sm">Magias</h1>
+                <p class="text-start font-xsm">
                   {{ isExistStorage('Spells') ? `5 Registrados` : "A categoria está vazia" }}
                 </p>
               </div>

@@ -1,6 +1,7 @@
 $color-brand-one: rgb(255, 255, 255);
 $color-brand-two: rgb(37, 37, 37);
 $color-brand-three: rgb(25, 25, 25);
+$color-brand-four: rgb(190, 190, 190);
 $gradient-brand-one: linear-gradient(340deg, rgb(20, 20, 20) 50%, rgb(37, 37, 37) 100%);
 $gradient-brand-two: linear-gradient(340deg, rgb(235, 235, 235) 50%, rgb(255, 255, 255) 100%);
 
@@ -9,6 +10,7 @@ $gradient-brand-two: linear-gradient(340deg, rgb(235, 235, 235) 50%, rgb(255, 25
   --color-brand-one: #{$color-brand-one};
   --color-brand-two: #{$color-brand-two};
   --color-brand-three: #{$color-brand-three};
+  --color-brand-four: #{$color-brand-four};
 
   --gradient-brand-one: #{$gradient-brand-one};
   --gradient-brand-two: #{$gradient-brand-two};
@@ -35,9 +37,14 @@ $gradient-brand-two: linear-gradient(340deg, rgb(235, 235, 235) 50%, rgb(255, 25
 .color-brand-one{
   color: var(--color-brand-one);
 }
-
 .color-brand-two{
   color: var(--color-brand-two);
+}
+.color-brand-three{
+  color: var(--color-brand-three);
+}
+.color-brand-four{
+  color: var(--color-brand-four);
 }
 
 .bg-color-brand-three{

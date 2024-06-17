@@ -12,8 +12,8 @@
                 class="w-full"
                 placeholder="Informe seu nome completo"
                 title="Qual seu nome"
-                :value="form_data['fullname']"
-                v-model="form_data['fullname']"
+                :value="form['fullname']"
+                v-model="form['fullname']"
             />
         </div>
 
@@ -22,25 +22,33 @@
                 class="w-full"
                 placeholder="Nome usado para exibição"
                 title="Como quer ser chamado"
-                :value="form_data['name']"
-                v-model="form_data['name']"
+                :value="form['name']"
+                v-model="form['name']"
             />
         </div>
 
         <div class="w-full flex gap-md">
-            <InputText
+            <InputSelect
+                v-model="form['state']"
+                title="Em que estado vive"
+                placeholder="Lista de estado"
                 class="w-full"
-                placeholder="Somente nome"
-                title="Em que cidade mora"
-                :value="form_data['city']"
-                v-model="form_data['city']"
+                :form="[
+                    { label: 'São Paulo', value: 'São Paulo' },
+                    { label: 'Minas Gerais', value: 'Minas Gerais' },
+                    { label: 'Bahia', value: 'Bahia' }
+                ]"
             />
-            <InputText
+            <InputSelect
+                v-model="form['city']"
+                title="E qual a cidade"
+                placeholder="Lista de cidade"
                 class="w-full"
-                placeholder="Sigla UF"
-                title="A que estado pertence"
-                :value="form_data['state']"
-                v-model="form_data['state']"
+                :form="[
+                    { label: 'Xique xique', value: 'Xique xique' },
+                    { label: 'Cerquilho', value: 'Cerquilho' },
+                    { label: 'Itapeba', value: 'Itapeba' }
+                ]"
             />
         </div>
 
@@ -49,8 +57,8 @@
                 class="w-full"
                 placeholder="Email para validações e notificações"
                 title="Informe um email para contato"
-                :value="form_data['email']"
-                v-model="form_data['email']"
+                :value="form['email']"
+                v-model="form['email']"
             />
         </div>
 
@@ -87,7 +95,7 @@ import { useNavigationStore } from '@/stores/navigation.js'
 export default{
     data() {
         return {
-            form_data: {}
+            form: {}
         }
     },
     components: {
@@ -102,7 +110,7 @@ export default{
             this.$router.push( { name: route } )
         },
         setAccount(){
-            StorageSet("Administration", "ProfileDefault",this.form_data);
+            StorageSet("Administration", "ProfileDefault",this.form);
             useNavigationStore().setTitle(null);
             this.setRoute('main-board');
         }
