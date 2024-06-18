@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 export const useNavigationStore = defineStore('navigation', {
     state: () => ({
-        title: null,
+        title: null
     }),
     getters: {
         getTitle: (state) => state.title
@@ -10,6 +10,6 @@ export const useNavigationStore = defineStore('navigation', {
     actions: {
         setTitle(title) {
             this.title = title;
-        },
+        }
     }
 })

@@ -62,7 +62,7 @@ export default{
             const imageReader = new FileReader();
             imageReader.onload = (e) => {
                 this.images.push(e.target.result);
-                this.$emit('@change', this.images);
+                this.$emit('update:modelValue', this.images);
             }
             imageReader.readAsDataURL(event.target.files[0]);
         }

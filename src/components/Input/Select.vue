@@ -1,10 +1,10 @@
 <template>
 
     <div 
-        class="input-select-wrapper"
+        class="input-select-wrapper "
         :class="this.class, type"
     >
-        <p v-if="title">{{ title }}</p>
+        <p class="input-select-title" v-if="title">{{ title }}</p>
         <div 
             class="select-data flex justify-between y-center"
             :class="{'isopen': status_opened_form}"
@@ -15,7 +15,7 @@
                     v-if="placeholder && selected_index === null"
                     class="color-brand-four"
                 >
-                    {{ form.length <= 0 ? 'Não existem valores associados' : placeholder }}
+                    {{ form.length <= 0 ? 'Sem valores' : placeholder }}
                 </p>
                 <p
                     v-else
@@ -57,6 +57,7 @@ import * as Misc from '@/components/Misc';
 export default{
     data(){
         return {
+            formatted_values: [],
             status_opened_form: false,
             selected_index: null,
         }
@@ -85,6 +86,8 @@ export default{
             type: Array,
             default: () => []
         }
+    },
+    created(){
     }
 }
 
@@ -94,6 +97,10 @@ export default{
 
 .input-select-wrapper{
     position: relative;
+
+    .input-select-title{
+        margin-bottom: var(--scale-brand-sm);
+    }
 
     &.one{
         div.select-data{

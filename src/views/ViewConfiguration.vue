@@ -1,6 +1,6 @@
 <template>
 
-    <div class="configuration-wrapper flex flex-column gap-md h-full p-lg bg-gradient-brand-two">
+    <div class="configuration-wrapper flex flex-column gap-md h-full scroll-y p-lg bg-gradient-brand-two">
 
         <div class="w-full flex flex-column gap-md">
             <h1 class="color-brand-two font-lg">Criar nova conta</h1>
@@ -28,26 +28,42 @@
         </div>
 
         <div class="w-full flex gap-md">
+            <InputText
+                v-model="form['cep']"
+                class="w-full"
+                placeholder="Consulta de cidade e estado"
+                title="Informe seu cep"
+                :value="form['cep']"
+                :limit-char="8"
+            />
+        </div>
+
+        <div class="w-full flex gap-md">
             <InputSelect
                 v-model="form['state']"
                 title="Em que estado vive"
                 placeholder="Lista de estado"
                 class="w-full"
-                :form="[
-                    { label: 'São Paulo', value: 'São Paulo' },
-                    { label: 'Minas Gerais', value: 'Minas Gerais' },
-                    { label: 'Bahia', value: 'Bahia' }
-                ]"
+                :form="states"
             />
             <InputSelect
                 v-model="form['city']"
                 title="E qual a cidade"
                 placeholder="Lista de cidade"
                 class="w-full"
+                :form="cities"
+            />
+        </div>
+
+        <div class="w-full flex gap-md">
+            <InputSelect
+                v-model="form['gender']"
+                title="Qual é seu genero"
+                placeholder="Escolha seu genero"
+                class="w-full"
                 :form="[
-                    { label: 'Xique xique', value: 'Xique xique' },
-                    { label: 'Cerquilho', value: 'Cerquilho' },
-                    { label: 'Itapeba', value: 'Itapeba' }
+                    { label: 'Masculino', value: 'masculino' },
+                    { label: 'Feminino', value: 'feminino' },
                 ]"
             />
         </div>
@@ -64,6 +80,7 @@
 
         <div class="w-full flex gap-md">
             <InputPicture
+                v-model="form['picture']"
             />
         </div>
 
@@ -95,12 +112,26 @@ import { useNavigationStore } from '@/stores/navigation.js'
 export default{
     data() {
         return {
-            form: {}
+            form: {},
+            states: [],
+            cities: [],
         }
     },
     components: {
         ...Input,
         ...Button
+    },
+    watch: {
+        'form.cep': function(value) {
+            if(value.length > 7){
+                fetch(`https://viacep.com.br/ws/${value}/json/`)
+                    .then((response) => response.json())
+                    .then(data => {
+                        this.cities = [{ label: data?.localidade, value: data?.localidade }];
+                        this.states = [{ label: data?.uf, value: data?.uf }];
+                    })
+            }
+        }
     },
     created(){
         useNavigationStore().setTitle('Configurações');

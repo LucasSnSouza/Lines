@@ -77,6 +77,7 @@ export default{
 .header-main-page{
   height: 80px;
   position: fixed;
+  /* backdrop-filter: blur(10px); */
 }
 
 .container-main-page{
