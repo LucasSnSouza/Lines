@@ -10,17 +10,20 @@ const router = createRouter({
     {
       path: '/',
       name: 'main-board',
-      component: ViewMainBoard
+      component: ViewMainBoard,
+      meta: { background: 'bg-gradient-brand-one', title: '' }
     },
     {
       path: '/configuration',
       name: 'configuration',
-      component: ViewConfiguration
+      component: ViewConfiguration,
+      meta: { background: 'bg-gradient-brand-two', title: '' }
     },
     {
       path: '/catalog',
       name: 'catalog',
-      component: ViewCatalog
+      component: ViewCatalog,
+      meta: { background: 'bg-gradient-brand-two', title: '' }
     },
   ]
 })

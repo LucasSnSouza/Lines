@@ -1,6 +1,6 @@
 <template>
 
-    <div class="configuration-wrapper color-brand-two flex flex-column gap-md h-full p-lg bg-gradient-brand-two">
+    <div class="configuration-wrapper color-brand-two flex flex-column gap-md p-lg">
 
         <div>
           <h1 class="font-md">{{ getPageTitle() }}</h1>
@@ -19,6 +19,7 @@
         <InputSelect
             v-model="form['tagFilter']"
             placeholder="Filtrar por alguma tag"
+            :form="tags"
         />
 
     </div>
@@ -31,12 +32,15 @@ import * as Button from '@/components/Button';
 import * as Input from '@/components/Input';
 import * as Misc from '@/components/Misc';
 
+import { StorageSet, StorageGet, StorageFind } from '@/utils/Storage.js';
+
 import { useNavigationStore } from '@/stores/navigation.js'
 
 export default{
     data(){
         return {
-            form: {}
+            form: {},
+            tags: []
         }
     },
     components: {
@@ -46,6 +50,9 @@ export default{
     },
     created(){
         useNavigationStore().setTitle(this.$route.query.title);
+        this.tags = StorageGet('Warehouse').Warehouse.tags.map((item) => {
+            return { label: item, value: item }
+        })
     },
     methods: {
         getPageTitle(){

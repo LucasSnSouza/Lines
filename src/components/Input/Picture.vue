@@ -13,7 +13,7 @@
                 <img class="h-full" :src="picture">
             </span>
             <label 
-                v-if="images <= maxImages"
+                v-if="images.length < maxImages"
                 for="file"
                 class="add flex x-center y-center"
             >
@@ -76,6 +76,11 @@ export default{
 .input-picture{
 
     &.one{
+
+        div{
+            display: flex;
+            flex-direction: column;
+        }
 
         span{
             width: 100%;

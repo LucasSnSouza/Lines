@@ -1,6 +1,6 @@
 <template>
 
-    <div class="main-board-wrapper h-full p-lg bg-gradient-brand-one">
+    <div class="main-board-wrapper p-lg">
         <div class="main-board-title">
           <h1 class="color-brand-one font-lg" v-if="user_name">Oi {{ user_name }}</h1>
           <ButtonBasic

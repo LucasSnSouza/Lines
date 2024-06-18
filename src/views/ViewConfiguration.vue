@@ -1,6 +1,6 @@
 <template>
 
-    <div class="configuration-wrapper flex flex-column gap-md h-full scroll-y p-lg bg-gradient-brand-two">
+    <div class="configuration-wrapper flex flex-column gap-md p-lg">
 
         <div class="w-full flex flex-column gap-md">
             <h1 class="color-brand-two font-lg">Criar nova conta</h1>
@@ -9,21 +9,23 @@
 
         <div class="w-full flex gap-md">
             <InputText
+                v-model="form['fullname']"
                 class="w-full"
                 placeholder="Informe seu nome completo"
                 title="Qual seu nome"
                 :value="form['fullname']"
-                v-model="form['fullname']"
+                :limit-char="50"
             />
         </div>
 
         <div class="w-full flex gap-md">
             <InputText
+                v-model="form['name']"
                 class="w-full"
                 placeholder="Nome usado para exibição"
                 title="Como quer ser chamado"
                 :value="form['name']"
-                v-model="form['name']"
+                :limit-char="30"
             />
         </div>
 
@@ -70,17 +72,18 @@
 
         <div class="w-full flex gap-md">
             <InputText
+                v-model="form['email']"
                 class="w-full"
                 placeholder="Email para validações e notificações"
                 title="Informe um email para contato"
                 :value="form['email']"
-                v-model="form['email']"
             />
         </div>
 
         <div class="w-full flex gap-md">
             <InputPicture
                 v-model="form['picture']"
+                :max-images="1"
             />
         </div>
 
@@ -88,7 +91,7 @@
 
             <ButtonBasic
                 type="one"
-                class="w-full p-lg rounded-lg flex flex-column gap-md"
+                class="w-full p-lg rounded-md flex flex-column gap-md"
                 @click="setAccount()"
             >
                 <p class="color-brand-one text-start font-sm">Finalizar formulario</p>
