@@ -14,11 +14,14 @@ const ExampleWarehouse = {
     ]
 }
 
-const ExampleTools = {
+const ExampleTools = [
+    {
+        name: "teste"
+    }
+]
 
-}
-
-export {
+export{
     ExampleAdministrationAcount,
-    ExampleWarehouse
+    ExampleWarehouse,
+    ExampleTools
 }

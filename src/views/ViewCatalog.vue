@@ -1,6 +1,6 @@
 <template>
 
-    <div class="configuration-wrapper color-brand-two flex flex-column gap-md p-lg">
+    <div class="catalog-wrapper color-brand-two flex flex-column gap-md p-lg">
 
         <div>
           <h1 class="font-md">{{ getPageTitle() }}</h1>
@@ -19,8 +19,21 @@
         <InputSelect
             v-model="form['tagFilter']"
             placeholder="Filtrar por alguma tag"
-            :form="tags"
+            :form="form?.tags"
         />
+
+        <div class="catalog-items gap-sm">
+
+            <ButtonBasic
+                v-for="(item, index) of form?.items || []"
+                type="one"
+                class="w-full p-lg rounded-lg shadow-sm"
+                :key="index"
+            >
+                
+            </ButtonBasic>
+
+        </div>
 
     </div>
 
@@ -39,8 +52,9 @@ import { useNavigationStore } from '@/stores/navigation.js'
 export default{
     data(){
         return {
-            form: {},
-            tags: []
+            form: {
+                items: StorageGet('StorageTools')?.Tools
+            },
         }
     },
     components: {
@@ -50,7 +64,7 @@ export default{
     },
     created(){
         useNavigationStore().setTitle(this.$route.query.title);
-        this.tags = StorageGet('Warehouse').Warehouse.tags.map((item) => {
+        this.form['tags'] = StorageGet('Warehouse').Warehouse.tags.map((item) => {
             return { label: item, value: item }
         })
     },
@@ -65,8 +79,13 @@ export default{
 
 <style lang="scss" scoped>
 
-.configuration-wrapper{
+.catalog-wrapper{
     padding-top: 70px;
+
+    .catalog-items{
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
 }
 
 </style>

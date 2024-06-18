@@ -54,7 +54,8 @@ import * as Misc from '@/components/Misc';
 
 import { 
   ExampleAdministrationAcount,
-  ExampleWarehouse 
+  ExampleWarehouse,
+  ExampleTools
 } from '@/constants/PrefabApp.js'
 
 export default{
@@ -69,8 +70,9 @@ export default{
   },
   created(){
     if(!StorageFind('storage', { value: 'Administration' })){
-      StorageSet("Administration", "ProfileDefault", ExampleAdministrationAcount)
-      StorageSet("Warehouse", "Warehouse", ExampleWarehouse)
+      StorageSet("Administration", "ProfileDefault", ExampleAdministrationAcount);
+      StorageSet("Warehouse", "Warehouse", ExampleWarehouse);
+      StorageSet("StorageTools", "Tools", ExampleTools);
     }
   },
   mounted(){
