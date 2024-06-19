@@ -78,3 +78,7 @@ $font-xlg: 20pt;
 .shadow-sm{
     box-shadow: $scale-sm $scale-sm $scale-md rgba(0, 0, 0, 0.1);
 }
+
+.aspect-ratio{
+    aspect-ratio: 1/1;
+}

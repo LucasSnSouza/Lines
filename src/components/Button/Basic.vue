@@ -44,6 +44,10 @@ export default{
         border: 2px solid var(--color-brand-two);
     }
 
+    &.three{
+        background: var(--color-brand-one);
+    }
+
 }
 
 </style>

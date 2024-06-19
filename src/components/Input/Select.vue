@@ -121,6 +121,8 @@ export default{
             border-radius: var(--scale-brand-md);
             padding: var(--scale-brand-md);
             box-shadow: var(--scale-brand-sm) var(--scale-brand-sm) var(--scale-brand-md) rgba(0, 0, 0, 0.10);
+            max-height: 300px;
+            overflow-y: scroll;
 
             p{
                 padding: var(--scale-brand-md);

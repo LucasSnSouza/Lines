@@ -13,7 +13,7 @@
 
         <ButtonGroup
             v-model="form['ownerFilter']"
-            :form="[{ label: 'sistema', value: 'sistema' }, { label: 'pessoal', value: 'pessoal' }]"
+            :form="[{ label: 'sistema', value: 'system' }, { label: 'pessoal', value: 'pessoal' }]"
         />
 
         <InputSelect
@@ -22,15 +22,30 @@
             :form="form?.tags"
         />
 
-        <div class="catalog-items gap-sm">
+        <div class="catalog-items flex flex-column gap-sm">
 
             <ButtonBasic
                 v-for="(item, index) of form?.items || []"
-                type="one"
-                class="w-full p-lg rounded-lg shadow-sm"
+                type="three"
+                class="flex text-start w-full gap-md rounded-md shadow-sm color-brand-two"
+                :class="{'p-md': item?.thumbnail, 'p-lg': !item?.thumbnail}"
                 :key="index"
             >
-                
+                <div 
+                    v-if="item?.thumbnail"
+                    class="flex x-center y-center h-full aspect-ratio rounded-sm bg-color-brand-four"
+                    style="height: 50px;"
+                >
+                    <MiscIcon
+                        :icon="item?.thumbnail"
+                        :size="[22,22]"
+                        color="#3c3c3c"
+                    />
+                </div>
+                <div class="flex flex-column">
+                    <h1 class="font-sm">{{ item?.name }}</h1>
+                    <p class="color-brand-four font-xsm">{{ item?.description }}</p>
+                </div>
             </ButtonBasic>
 
         </div>
@@ -53,7 +68,8 @@ export default{
     data(){
         return {
             form: {
-                items: StorageGet('StorageTools')?.Tools
+                items: [],
+                tags: StorageGet('Warehouse').Warehouse.tags
             },
         }
     },
@@ -62,11 +78,25 @@ export default{
         ...Input,
         ...Misc
     },
+    watch: {
+        'form.ownerFilter': function(value) {
+            this.form.items = StorageGet('StorageTools')?.Tools.filter((item) => {
+                if(this.form?.tagFilter){
+                    return item?.owner === value && item?.tags.includes(this.form?.tagFilter);
+                }
+                else{
+                    return item?.owner === value;
+                }
+            })
+        },
+        'form.tagFilter': function(value) {
+            this.form.items = StorageGet('StorageTools')?.Tools.filter((item) => {
+                return item?.tags.includes(value);
+            })
+        }
+    },
     created(){
         useNavigationStore().setTitle(this.$route.query.title);
-        this.form['tags'] = StorageGet('Warehouse').Warehouse.tags.map((item) => {
-            return { label: item, value: item }
-        })
     },
     methods: {
         getPageTitle(){
@@ -82,10 +112,6 @@ export default{
 .catalog-wrapper{
     padding-top: 70px;
 
-    .catalog-items{
-        display: grid;
-        grid-template-columns: 50% 50%;
-    }
 }
 
 </style>
