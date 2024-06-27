@@ -72,7 +72,9 @@ export default{
     if(!StorageFind('storage', { value: 'Administration' })){
       StorageSet("Administration", "ProfileDefault", ExampleAdministrationAcount);
       StorageSet("Warehouse", "Warehouse", ExampleWarehouse);
-      StorageSet("StorageTools", "Tools", ExampleTools);
+
+      StorageSet("StorageTools", "items", ExampleTools.items);
+      StorageSet("StorageTools", "interface", ExampleTools.interface);
     }
   },
   mounted(){

@@ -13,7 +13,7 @@
 
         <ButtonGroup
             v-model="form['ownerFilter']"
-            :form="[{ label: 'sistema', value: 'system' }, { label: 'pessoal', value: 'pessoal' }]"
+            :form="[{ label: 'sistema', value: 'system' }, { label: 'pessoal', value: getCurrentRegister().name }]"
         />
 
         <InputSelect
@@ -30,6 +30,7 @@
                 class="flex text-start w-full gap-md rounded-md shadow-sm color-brand-two"
                 :class="{'p-md': item?.thumbnail, 'p-lg': !item?.thumbnail}"
                 :key="index"
+                @click="$router.push( { name: 'creation', query: { title: this.$route.query.title, filter: this.$route.query?.filter, index: getIndex(item.name) } } )"
             >
                 <div 
                     v-if="item?.thumbnail"
@@ -48,6 +49,20 @@
                 </div>
             </ButtonBasic>
 
+        </div>
+
+        <div class="tool-administration absolute flex">
+            <ButtonBasic
+                type="one"
+                class="flex text-start y-center x-center w-full h-full gap-md rounded-md shadow-sm color-brand-two"
+                @click="$router.push( { name: 'creation', query: { title: this.$route.query.title, filter: this.$route.query?.filter } } )"
+            >
+                <MiscIcon
+                    icon="plus"
+                    :size="[14,14]"
+                    color="#FFFFFF"
+                />
+            </ButtonBasic>
         </div>
 
     </div>
@@ -69,8 +84,9 @@ export default{
         return {
             form: {
                 items: [],
-                tags: StorageGet('Warehouse').Warehouse.tags
+                tags: StorageGet('Warehouse').Warehouse.tags,
             },
+            storage: StorageGet(this.$route.query?.filter)
         }
     },
     components: {
@@ -80,9 +96,9 @@ export default{
     },
     watch: {
         'form.ownerFilter': function(value) {
-            this.form.items = StorageGet('StorageTools')?.Tools.filter((item) => {
+            this.form.items = this.storage?.items.filter((item) => {
                 if(this.form?.tagFilter){
-                    return item?.owner === value && item?.tags.includes(this.form?.tagFilter);
+                    return item?.owner === value && item?.tags ? item?.tags.includes(this.form?.tagFilter) : false ;
                 }
                 else{
                     return item?.owner === value;
@@ -90,8 +106,8 @@ export default{
             })
         },
         'form.tagFilter': function(value) {
-            this.form.items = StorageGet('StorageTools')?.Tools.filter((item) => {
-                return item?.tags.includes(value);
+            this.form.items = this.storage?.items.filter((item) => {
+                return item?.tags ? item?.tags.includes(value) : false;
             })
         }
     },
@@ -101,6 +117,12 @@ export default{
     methods: {
         getPageTitle(){
             return useNavigationStore().getTitle;
+        },
+        getCurrentRegister(){
+            return StorageGet('Administration').ProfileDefault;
+        },
+        getIndex(value){
+            return this.storage.items.findIndex((item) => item.name === value)
         }
     }
 }
@@ -111,6 +133,13 @@ export default{
 
 .catalog-wrapper{
     padding-top: 70px;
+
+    .tool-administration{
+        bottom: var(--scale-brand-lg);
+        right: var(--scale-brand-lg);
+        width: 40px;
+        height: 40px;
+    }
 
 }
 

@@ -4,7 +4,7 @@
         :class="this.class, type"
     >
         <p v-if="title">{{ title }}</p>
-        <input 
+        <textarea 
             class="w-full h-full font-sm"
             :value="value"
             :placeholder="placeholder"
@@ -65,10 +65,11 @@ export default{
 
     &.one{
         
-        input{
+        textarea{
             border: 1px solid var(--color-brand-two);
             border-radius: var(--scale-brand-md);
             outline: none;
+            height: 200px;
             padding: var(--scale-brand-lg);
         }
 

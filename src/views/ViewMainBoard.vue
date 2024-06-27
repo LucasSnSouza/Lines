@@ -110,7 +110,7 @@
             <ButtonBasic
               type="one"
               class="w-full p-lg text-start rounded-lg flex flex-column gap-md color-brand-one"
-              @click="$router.push( { name: 'catalog', query: { title: 'Ferramentas' } } )"
+              @click="$router.push( { name: 'catalog', query: { title: 'Ferramentas', filter: 'StorageTools' } } )"
             >
               <MiscIcon
                 icon="sword-icon"
@@ -127,7 +127,7 @@
             <ButtonBasic
               type="one"
               class="w-full text-start p-lg rounded-lg flex flex-column gap-md color-brand-one"
-              @click="$router.push( { name: 'catalog', query: { title: 'Materiais' } } )"
+              @click="$router.push( { name: 'catalog', query: { title: 'Materiais', filter: 'StorageMaterials' } } )"
             >
               <MiscIcon
                 icon="item-icon"
@@ -144,7 +144,7 @@
             <ButtonBasic
               type="one"
               class="w-full p-lg text-start rounded-lg flex flex-column gap-md color-brand-one"
-              @click="$router.push( { name: 'catalog', query: { title: 'Vestimentas' } } )"
+              @click="$router.push( { name: 'catalog', query: { title: 'Vestimentas', filter: 'StorageClouths' } } )"
             >
               <MiscIcon
                 icon="clouth-icon"
@@ -161,7 +161,7 @@
             <ButtonBasic
               type="one"
               class="w-full p-lg text-start rounded-lg flex flex-column gap-md color-brand-one"
-              @click="$router.push( { name: 'catalog', query: { title: 'Efeitos' } } )"
+              @click="$router.push( { name: 'catalog', query: { title: 'Efeitos', filter: 'StorageEffects' } } )"
             >
               <MiscIcon
                 icon="particle-icon"
@@ -178,7 +178,7 @@
             <ButtonBasic
               type="one"
               class="w-full p-lg text-start rounded-lg flex flex-column gap-md color-brand-one"
-              @click="$router.push( { name: 'catalog', query: { title: 'Magias' } } )"
+              @click="$router.push( { name: 'catalog', query: { title: 'Magias', filter: 'StorageSpells' } } )"
             >
               <MiscIcon
                 icon="hand-icon"
